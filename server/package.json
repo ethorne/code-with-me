@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ethorne/computer-tutor/issues"
   },
-  "homepage": "https://github.com/ethorne/computer-tutor#readme"
+  "homepage": "https://github.com/ethorne/computer-tutor#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "validate": "^4.5.1"
+  }
 }
