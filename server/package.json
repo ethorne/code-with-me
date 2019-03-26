@@ -1,0 +1,19 @@
+{
+  "name": "ct-server",
+  "version": "1.0.0",
+  "description": "Server-side code for the Computer Tutor application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ethorne/computer-tutor.git"
+  },
+  "author": "Erik Thorne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ethorne/computer-tutor/issues"
+  },
+  "homepage": "https://github.com/ethorne/computer-tutor#readme"
+}
