@@ -1,0 +1,5 @@
+#! /bin/bash
+
+export PORT=5000;
+export SERVER_ROOT='/absolute/path/to/computer-tutor/server';
+export CLIENT_ROOT='absolute/path/to/computer-tutor/client';
