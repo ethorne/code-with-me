@@ -2,6 +2,7 @@
   "name": "ct-client",
   "version": "1.0.0",
   "description": "Client-side code for the Computer Tutor application.",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "test"
@@ -19,5 +20,9 @@
   "dependencies": {
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }

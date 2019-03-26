@@ -2,6 +2,7 @@
   "name": "ct-server",
   "version": "1.0.0",
   "description": "Server-side code for the Computer Tutor application.",
+  "private": true,
   "main": "server.js",
   "scripts": {
     "test": "test"
@@ -20,5 +21,9 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "validate": "^4.5.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
