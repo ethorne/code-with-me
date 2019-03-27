@@ -5,7 +5,8 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "test": "test"
+    "build": "webpack",
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,16 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "path": "^0.12.7",
     "validate": "^4.5.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

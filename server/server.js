@@ -2,16 +2,29 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+
 
 ////////////////////////////////////////////////////////// ENVIRONMENT VARIABLES
 
 const port = process.env.PORT || 5000;
-const serverRoot = process.env.SERVER_ROOT || '';
-const clientRoot = process.env.CLIENT_ROOT || '';
+const serverRoot = __dirname;
 
-const dataCtrlDir = `${serverRoot}/controllers/data`;
-const viewCtrlDir = `${serverRoot}/controllers/view`;
+const app = express();
+const config = require(`${serverRoot}/webpack.config.js`)
+const webpackConfig = {
+  compiler: webpack(config),
+  options: {
+    publicPath: config.output.publicPath,
+    hot: config.mode === 'development',
+    contentBase: `${serverRoot}/dist`
+  }
+};
+
+const dataCtrlDir = `${serverRoot}/src/controllers/data`;
+const viewCtrlDir = `${serverRoot}/src/controllers/view`;
 
 const controllers = {
   data: {
@@ -24,6 +37,8 @@ const controllers = {
 
 /////////////////////////////////////////////////////////////////// SERVER SETUP
 
+app.use(webpackDevMiddleware(webpackConfig.compiler, webpackConfig.options));
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -35,6 +50,3 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 /////////////////////////////////////////////////////////////////// URL MAPPINGS
 
 app.get('/', controllers.data.application.info);
-app.get('/', controllers.data.application.info);
-
-
