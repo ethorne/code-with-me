@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack",
-    "server": "node server.js"
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "@babel/core": "^7.4.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
+    "nodemon": "^1.18.10",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",

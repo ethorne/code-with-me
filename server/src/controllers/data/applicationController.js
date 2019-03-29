@@ -1,5 +1,5 @@
 exports.info = (req, res) => {
   res.send({
-    message: "hella world"
+    message: "hello world"
   });
 };

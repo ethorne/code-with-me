@@ -4,7 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
 
 
 ////////////////////////////////////////////////////////// ENVIRONMENT VARIABLES
@@ -19,7 +18,16 @@ const webpackConfig = {
   options: {
     publicPath: config.output.publicPath,
     hot: config.mode === 'development',
-    contentBase: `${serverRoot}/dist`
+    contentBase: `${serverRoot}/dist`,
+    watchContentBase: true,
+    proxy: [
+      {
+        context: ['/'],
+        target: 'http://localhost:8000',
+        secure: false,
+      }
+    ],
+    port: port
   }
 };
 
