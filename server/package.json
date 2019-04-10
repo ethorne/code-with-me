@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Server-side code for the Computer Tutor application.",
   "private": true,
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "build": "webpack",
-    "server": "nodemon server.js"
+    "build": "rm -rf dist && webpack --mode development",
+    "start": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
-    "babel-core": "^6.26.3",
+    "@babel/preset-env": "^7.4.3",
     "babel-loader": "^8.0.5",
     "nodemon": "^1.18.10",
     "webpack": "^4.29.6",

@@ -1,23 +1,20 @@
 const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-  mode: 'development',
-  entry: 'src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
-  },
+  devtool: '#source-map',
+  entry: path.resolve(__dirname, 'server.js'),
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        test: /^.*\.(js|jsx)$/,
         use: {
           loader: 'babel-loader',
           options: {
             presets: [
-              'env',
-              'react'
+              '@babel/preset-env',
+              '@babel/preset-react'
             ]
           }
         }
@@ -29,10 +26,25 @@ module.exports = {
           'css-loader',
           'less-loader'
         ]
+      },
+      {
+        test: /^.*\.html$/,
+        exclude: /node_modules/,
+        use: 'html-loader'
       }
     ]
   },
+  output: {
+    filename: 'computer-tutor.client.dev.bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: path.resolve(__dirname),
+  },
   plugins: [
+    new HtmlWebPackPlugin({
+      template: path.resolve(__dirname, 'src/views/index.html'),
+      filename: path.resolve(__dirname, 'src/views/index.html'),
+    })
     new MiniCssExtractPlugin({filename: 'main.css'})
-  ]
+  ],
+  target: 'web'
 }

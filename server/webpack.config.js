@@ -3,26 +3,29 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
-  target: 'node',
   externals: [nodeExternals()],
-  entry: path.resolve(__dirname, 'server.js'),
-  devtool: 'inline-source-map',
+  entry: path.resolve(__dirname, 'src/server.js'),
+  module: {
+    rules: [
+      {
+        test: /^.*\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  },
+  node: {
+    // force regular Node.js __filename behavior:
+    // filename/dirname of output file when run in a Node.js environment
+    __dirname: false,
+    __filename: false,
+  },
   output: {
     filename: 'computer-tutor.server.dev.bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: path.resolve(__dirname),
   },
-  module: {
-    rules: [
-      {
-        test: /^.*\.js/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      }
-    ]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  target: 'node'
 }
