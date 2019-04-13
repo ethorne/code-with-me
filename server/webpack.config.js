@@ -5,6 +5,7 @@ const webpack = require('webpack');
 module.exports = {
   externals: [nodeExternals()],
   entry: path.resolve(__dirname, 'src/server.js'),
+  mode: 'development',
   module: {
     rules: [
       {
