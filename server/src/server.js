@@ -13,7 +13,6 @@ if (process.env.NODE_ENV === 'development') {
 // ENVIRONMENT VARIABLES
 
 const port = process.env.PORT || 5000;
-console.log(__dirname);
 const srcDir = __dirname;
 
 const app = express();
@@ -49,8 +48,7 @@ const controllers = {
     application: require(`${dataCtrlDir}/applicationController.js`)
   },
   view: {
-    //TODO
-    //react: require(`${viewCtrlDir}/reactController.js`)
+    react: require(`${viewCtrlDir}/reactController.js`)
   }
 }
 
@@ -72,4 +70,4 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get('/', controllers.data.application.info);
 
-//app.get('/view/react', controllers.view.react.getView);
+app.get('/view/react', controllers.view.react.getView);
