@@ -5,8 +5,13 @@
   "private": true,
   "main": "src/server.js",
   "scripts": {
-    "build": "rm -rf dist && webpack --mode development",
-    "start": "nodemon ./src/server.js"
+    "clean": "rm -rf dist",
+    "build": "rm -rf dist && webpack --mode development && webpack --mode production",
+    "buildDev": "rm -rf dist && webpack --mode production",
+    "buildProd": "rm -rf dist && webpack --mode development",
+    "dev": "NODE_ENV=development nodemon ./src/server.js",
+    "debug": "NODE_ENV=development nodemon inspect ./src/server.js",
+    "start": "NODE_ENV=production ./src/server.js"
   },
   "repository": {
     "type": "git",
