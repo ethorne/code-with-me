@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = (env, argv) => {
   let ret = {
@@ -42,7 +43,7 @@ module.exports = (env, argv) => {
       ]
     },
     output: {
-      filename: 'computer-tutor.client.dev.bundle.js',
+      filename: 'computer-tutor.client.react.dev.bundle.js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: path.resolve(__dirname),
     },
@@ -83,6 +84,15 @@ module.exports = (env, argv) => {
       ]
     });
   }
+  if (argv.mode === 'developmen') {
+    ret.plugins = [
+      new WebpackShellPlugin({
+        onBuildStart: ['npm run clean'],
+        onBuildEnd: ['cp dist/* ../server/dist'],
+      })
+    ]
+  }
 
   return ret;
 }
+

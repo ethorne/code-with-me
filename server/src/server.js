@@ -13,20 +13,21 @@ if (process.env.NODE_ENV === 'development') {
 // ENVIRONMENT VARIABLES
 
 const port = process.env.PORT || 5000;
-const srcDir = __dirname;
+global.srcDir = __dirname;
+
 
 const app = express();
 let webpackConfig = null;
 if (process.env.NODE_ENV === 'development') {
   // this feels gross and hacky...
-  let config = require(`${srcDir}/../webpack.config.js`);
+  let config = require(`${global.srcDir}/../webpack.config.js`);
   config = config(process.env, {mode:process.env.NODE_ENV});
   webpackConfig = {
     compiler: webpack(config),
     options: {
       publicPath: config.output.publicPath,
       hot: true,
-      contentBase: `${srcDir}/dist`,
+      contentBase: `${global.srcDir}/dist`,
       watchContentBase: true,
       proxy: [
         {
@@ -40,8 +41,8 @@ if (process.env.NODE_ENV === 'development') {
   };
 }
 
-const dataCtrlDir = `${srcDir}/controllers/data`;
-const viewCtrlDir = `${srcDir}/controllers/view`;
+const dataCtrlDir = `${global.srcDir}/controllers/data`;
+const viewCtrlDir = `${global.srcDir}/controllers/view`;
 
 const controllers = {
   data: {
