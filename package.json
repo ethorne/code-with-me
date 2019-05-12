@@ -1,14 +1,16 @@
 {
-  "name": "ct-client",
+  "name": "ct-server",
   "version": "1.0.0",
-  "description": "Client-side code for the Computer Tutor application.",
+  "description": "Server-side code for the Computer Tutor application.",
   "private": true,
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "webpack --mode development && webpack --mode production/",
-    "dev": "webpack --watch --mode development",
-    "prod": "webpack --mode production"
+    "build": "webpack -p --config webpack.prod.config.js",
+    "dev": "webpack-dev-server --mode development --config webpack.dev.config.js",
+    "server": "nodemon src/server/server.js",
+    "debug": "NODE_ENV=development nodemon inspect ./src/server.js",
+    "start": "NODE_ENV=production ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,30 +23,37 @@
   },
   "homepage": "https://github.com/ethorne/computer-tutor",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "html-webpack-plugin": "^3.2.0",
+    "path": "^0.12.7",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-fontawesome": "^1.6.1"
+    "react-fontawesome": "^1.6.1",
+    "validate": "^4.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/preset-env": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.5.0",
+    "nodemon": "^1.18.10",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "path": "^0.12.7",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-dev-server": "^3.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }
