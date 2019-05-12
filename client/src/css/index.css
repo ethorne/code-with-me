@@ -1,0 +1,92 @@
+body {
+  background: #0f0f0f;
+  color: #fff;
+  font: 14px "Lucida Console", Monaco, monospace;
+  margin: 50px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.square {
+  background: #B42311;
+  border: 1px solid #222;
+  float: left;
+  font-weight: bold;
+  line-height: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  min-width: 50px;
+  width: 100%;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+}
+
+#console {
+  margin-top: 20px;
+  width: 100%;
+}
+
+#console-input {
+  display: inline;
+  margin-left: 10px;
+}
+
+#console-prompt {
+  font-weight: bold;
+  display: inline;
+}
+
+.console-container {
+  width: 100%;
+  min-width: 250px;
+  min-height: 50px;
+  float: left;
+}
+
+.console-container:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.console-group {
+  padding: 10px;
+  border: 1px solid #222;
+  display: block;
+  margin-right: 5px;
+}
+
+.console-output-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.console-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.fa {
+  margin: 2px;
+}
+
+.alive {
+  color: white;
+}
+
+.dead {
+  color: #0f0f0f;
+}
