@@ -1,10 +1,10 @@
-#Computer Tutor
+# Computer Tutor
 Come and get tutored. I know how to do computer things, obviously.
 
-##Development
+## Development
 The client and the server are bundled seperately with webpack.
 
-###Client
+### Client
 
 ```
 cd client
@@ -12,7 +12,7 @@ npm run dev
 ```
 
 
-###Server
+### Server
 
 ```
 cd client
