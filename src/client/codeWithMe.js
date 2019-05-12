@@ -1,3 +1,5 @@
+import React from 'react';
+
 class CodeWithMe extends React.Component {
 
   constructor(props) {
